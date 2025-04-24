@@ -14,7 +14,7 @@ Problème #3: Structure de page incomplète
 
 Symptôme: L'application manque de modularité et de réutilisation de code. Impact: La maintenance du code est difficile, des composants sont dupliqués. Indice: Identifiez les éléments communs qui pourraient être extraits en composants réutilisables.
 
-Solution : 
+Solution : Le header et footer ont été extrait du app.component.html et placé dans deux component distinct : header et footer. Le CSS pour ces deux component ont été aussi extrait du app.component.css et placé dans les deux fichier css. Les component ont été générer avec la commande ng g c components/header et ng g c components/footer
 
 Problème #4: Pages non affichées
 
