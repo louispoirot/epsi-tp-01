@@ -6,11 +6,10 @@
 </button>
 
 <div class="books-container">
-  <!-- TODO 13 : Les données sont passées à la liste mais pas affichées. Affiche les données -->
-  <div *ngIf="data && data.length > 0; else noBooks">
-    <div class="book-card" *ngFor="let book of books">
+  <div *ngIf="books.length > 0; else noBooks">
+    <div *ngFor="let book of books" class="book-card">
       <div class="book-info">
-        <h2>{{ book.title }}</h2> <!-- TODO 14: Appliquer la directive highlight à ce champ -->
+        <h2 [appHighlight]>{{ book.title }}</h2>
         <p>{{ book.author }}</p>
         <p>
           <!-- TODO 15: Afficher la description du livre en utilisant un pour limiter à 20 caractères et ajouter des points de suspension si la description est plus longue.

@@ -1,95 +1,33 @@
-Problème #1: Navigation incorrecte
+TODO 1 et 3 : Faites en sorte que les liens fonctionnent, et que cela ne reload pas completement la page
+Indice : Il faut utiliser une directive sur le tag <a>
+Solution : Mise en place d'un routerLink à la place des href afin de permettre une transition sans rechargement de la page.
 
-Symptôme: Certains liens rechargent complètement la page au lieu d'utiliser le routeur Angular. Impact: L'expérience utilisateur est dégradée, l'application perd son état. Indice: Vérifiez comment les liens sont définis dans les templates HTML, en particulier les balises <a>.
+TODO 2 : Creer un pipe qui permet de mettre le premier mot en majuscule, le reste en minuscule et de remplacer les underscores par des espaces
+Solution : Création d'un pipe avec la commande ng g p pipes/format puis ajout de la configuration dans le pipe.ts généré dans le but de transformer le titre. Ajout du pipe dans le titre avec | format, avec l'ajout du pipe dans les imports du app.component.ts
 
-Solution : Remplacer les href par routerLink dans le app.component.html
+TODO 22 et 23 : Creer un component pour afficher le header et footer et l'utiliser dans le app.component.html
+Solution : Création de deux conponent header et footer crée en standalone avec ng g c components/header et components/footer, coupez/coller le header et footer et les placés dans les htmls généré pour le header et footer respectivement, en rajoutant les imports dans les .ts pour le header.
 
-Problème #2: Besoin de formatage de texte
+TODO 4 : Les pages ne sont pas affichées. Essayer de résoudre le problème
+Solution : Vérification des routerOutlet, du config.ts et du routes.ts, Je n'ai eu aucun problème pour l'affichage de différente page.
 
-Symptôme: Les catégories de livres ne sont pas affichées correctement. Impact: L'affichage n'est pas esthétique, les underscores sont visibles. Indice: Vous devez créer un pipe personnalisé pour formater le texte.
+TODO 5 : Créer une route pour la page détail d'un livre
+Solution : Route déjà existente dans le app.routes.ts { path: 'books/:id', component: BookDetailComponent },
 
-Solution : Créer un pipes avec ng g p [nom du pipe] (ng g p pipes/format pour ma part), ajouter dans format.pipe.ts le script pour transformer le texte, puis l'appliquer dans le app.component.html : <span>{{ title | format }}</span>
+TODO 6 : Créer un formulaire avec les champs suivants : title, author, description, category
+TODO 7 : Ajouter les validations nécessaires
+Solution pour les deux : Utilisation de FormBuilder, avec l'ajout d'un validateur Validators.required pour chaque champs nécessaire.
 
-Problème #3: Structure de page incomplète
+TODO 8 : Créer un bouton qui permet de revenir à la page précédente
+Solution : Utilisation de la commande this.router.navigate(['..']); pour renvoyer vers la page précédente. 
 
-Symptôme: L'application manque de modularité et de réutilisation de code. Impact: La maintenance du code est difficile, des composants sont dupliqués. Indice: Identifiez les éléments communs qui pourraient être extraits en composants réutilisables.
+TODO 13 : Les données sont passées à la liste mais pas affichées. Affiche les données
+Solution : Remplacement des data dans le Ngif par books, qui correpond aux nom des données, qui est utilisé dans le Ngfor.
 
-Solution : Le header et footer ont été extrait du app.component.html et placé dans deux component distinct : header et footer. Le CSS pour ces deux component ont été aussi extrait du app.component.css et placé dans les deux fichier css. Les component ont été générer avec la commande ng g c components/header et ng g c components/footer
+TODO 14: Appliquer la directive highlight à ce champ 
+TODO 10: Appliquer la directive highlight à ce champ
+Solution : Ajout de [appHighlight] dans le <h2> de {{ book title }}
 
-Problème #4: Pages non affichées
-
-Symptôme: Certaines pages ne s'affichent pas correctement. Impact: Les utilisateurs ne peuvent pas accéder à certaines fonctionnalités. Indice: Vérifiez la configuration des routes et la structure des composants.
-
-Solution : 
-
-Problème #5: Route manquante
-
-Symptôme: La page de détail d'un livre n'est pas accessible. Impact: Les utilisateurs ne peuvent pas voir les détails d'un livre. Indice: Vous devez créer une route dans le fichier de configuration des routes.
-
-Solution : 
-
-Problème #6: Formulaire incomplet
-
-Symptôme: Le formulaire d'ajout de livre n'est pas implémenté. Impact: Les utilisateurs ne peuvent pas ajouter de nouveaux livres. Indice: Vous devez créer un formulaire avec les champs nécessaires.
-
-Solution : 
-
-Problème #7: Validations manquantes
-
-Symptôme: Le formulaire accepte des données invalides. Impact: Des données incomplètes ou incorrectes peuvent être soumises. Indice: Ajoutez des validations aux champs du formulaire.
-
-Solution : 
-
-Problème #8: Navigation manquante
-
-Symptôme: Impossible de revenir à la page précédente depuis certaines vues. Impact: L'utilisateur se retrouve bloqué dans certaines pages. Indice: Ajoutez un bouton de retour et implémentez la navigation.
-
-Solution : 
-
-Problème #9: Erreur dans la console
-
-Symptôme: Erreur "Cannot read properties of undefined" dans la console. Impact: L'application peut planter lorsque les données ne sont pas chargées. Indice: Gérez correctement les données asynchrones avant d'y accéder.
-
-Solution : 
-
-Problème #10: Directive non appliquée
-
-Symptôme: Certains éléments ne sont pas mis en évidence comme prévu. Impact: L'expérience utilisateur est dégradée, manque d'indications visuelles. Indice: Appliquez la directive highlight aux éléments appropriés.
-
-Solution : 
-
-Problème #11: Bouton non fonctionnel
-
-Symptôme: Certains boutons ne réagissent pas aux clics. Impact: Les actions ne peuvent pas être effectuées. Indice: Vérifiez les gestionnaires d'événements associés aux boutons.
-
-Solution : 
-
-Problème #12: Données non affichées
-
-Symptôme: Les données sont chargées mais n'apparaissent pas dans l'interface. Impact: L'utilisateur ne voit pas les informations importantes. Indice: Vérifiez comment les données sont passées et affichées dans les templates.
-
-Solution : 
-
-Problème #13: Descriptions trop longues
-
-Symptôme: Les descriptions des livres prennent trop de place. Impact: L'interface utilisateur est encombrée et moins lisible. Indice: Utilisez ou créez un pipe pour limiter la longueur du texte affiché.
-
-Solution : 
-
-Problème #14: Retour utilisateur manquant
-
-Symptôme: Aucune confirmation n'est affichée après certaines actions. Impact: L'utilisateur ne sait pas si son action a réussi ou échoué. Indice: Ajoutez des alertes ou notifications pour informer l'utilisateur.
-
-Solution : 
-
-Problème #15: Erreur d'affichage du titre
-
-Symptôme: Les titres ne s'affichent pas correctement. Impact: L'information présentée est incorrecte ou mal formatée. Indice: Vérifiez comment les titres sont manipulés et affichés.
-
-Solution : 
-
-Problème #16: Directive incomplète
-
-Symptôme: La directive highlight ne fonctionne pas comme prévu. Impact: Certains éléments ne sont pas mis en évidence correctement. Indice: Modifiez la directive pour qu'elle affecte à la fois la couleur de fond et le poids du texte.
-
-Solution : 
+TODO 24: Modifier la directive pour que le texte soit en gras si l'input est true et appliquer cela au champ title du livre sur les pages book-detail et book-list
+Solution : Ajout de if (this.appHighlight) {
+      this.el.nativeElement.style.fontWeight = 'bold'; }  => Si c'est true, on met en gras le texte.
