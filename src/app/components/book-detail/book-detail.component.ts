@@ -47,7 +47,7 @@ export class BookDetailComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['..']);
+    this.router.navigate(['..'], { relativeTo: this.route });
 
   }
 }
